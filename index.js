@@ -1,17 +1,21 @@
 // Max number to find Primes
 let maxNumber = 1000000
 require('dotenv').config()
-    // Initialize cluster
+
+// Initialize cluster
 var cluster = require('cluster')
 const numCPU = require('os').cpus().length
-    // Set maxNumber to find prime
+   
 
 if (cluster.isWorker) {
+    // Load prime library
     const primeCalc = require('./primeDetails.js')
-    primeCalc.begin(process.env.start, process.env.end)
+    primeCalc.GetPrimeAndWriteToFile(process.env.start, process.env.end)
     process.exit()
 } else {
-    if (maxNumber % 2 === 1) maxNumber++ // Ensuring numbers are always a multiple of 2
+    // Ensuring numbers are always a multiple of 2
+    // Split into workers based on the max number
+    if (maxNumber % 2 === 1) maxNumber++ 
         const bracket = maxNumber / numCPU
     for (let i = 0; i < numCPU; i++) {
         let multiplier = i

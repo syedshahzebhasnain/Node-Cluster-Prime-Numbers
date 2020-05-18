@@ -1,6 +1,17 @@
 # Node-Cluster-Prime-Numbers
-This project was built with an intent to generate Prime numbers and their hashes for further analysis
+This project was built with an intent to generate Prime numbers, and their hashes for further analysis.
+
+The following fuctions are being done on the prime numbers
+
+1- sha1
+2- sha2
+3- sha256
+4- sha384
+5- sha512
+6- md5
+
 It currently utilizes node cluster to segregate tasks between different CPU Cores
+The results are then written to a text file.
 
 ## Start Project
 1. npm install
