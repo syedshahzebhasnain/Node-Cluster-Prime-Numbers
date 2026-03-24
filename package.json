@@ -1,28 +1,19 @@
 {
-    "name": "prime",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "lint": "node_modules/.bin/eslint --fix . ./"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "cluster": "^0.7.7",
-        "crypto-js": "^3.1.9-1",
-        "dotenv": "^6.1.0",
-        "fs": "0.0.1-security",
-        "fs-extra": "^7.0.0",
-        "os": "^0.1.1"
-    },
-    "devDependencies": {
-        "eslint": "^7.1.0",
-        "eslint-config-standard": "^14.1.1",
-        "eslint-plugin-import": "^2.20.2",
-        "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1"
-    }
+  "name": "node-cluster-prime-numbers",
+  "version": "2.0.0",
+  "description": "Blazing-fast prime number engine using worker_threads, segmented sieve, and native crypto",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "benchmark": "node index.js --benchmark --end 10000000",
+    "benchmark:big": "node index.js --benchmark --end 100000000",
+    "benchmark:nohash": "node index.js --no-hash --end 100000000",
+    "demo": "node index.js --end 1000000 --stdout | head -20"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["prime", "sieve", "worker_threads", "performance", "math"],
+  "author": "syedshahzebhasnain",
+  "license": "MIT"
 }
