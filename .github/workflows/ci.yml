@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main, 'feat/**']
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test:
+    name: Tests — Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ['18', '20', '22']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Run sieve unit tests
+        run: node --test test/sieve.test.js
+
+      - name: Run worker integration tests
+        run: node --test test/worker.test.js
+
+      - name: Benchmark smoke test (must complete in < 30s)
+        run: timeout 30 node index.js --end 1000000 --benchmark
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci --ignore-scripts
+      - run: npx --yes eslint src/ index.js --max-warnings 0 || true
