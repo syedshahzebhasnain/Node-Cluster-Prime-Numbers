@@ -18,7 +18,10 @@
     "quantum:verify": "node quantum-hunt.js --ntt-verify",
     "quantum:oracle": "node quantum-hunt.js --oracle-test",
     "quantum:benchmark": "node quantum-hunt.js --benchmark",
-    "quantum:hunt": "node quantum-hunt.js --start 2 --end 10000"
+    "quantum:hunt": "node quantum-hunt.js --start 2 --end 10000",
+    "twin:bench": "node twin-prime-bench.js --quick",
+    "twin:bench:full": "node twin-prime-bench.js",
+    "twin:verify": "node twin-prime-bench.js --verify"
   },
   "engines": {
     "node": ">=18.0.0"
