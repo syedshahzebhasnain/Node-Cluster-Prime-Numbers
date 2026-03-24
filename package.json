@@ -1,19 +1,27 @@
 {
   "name": "node-cluster-prime-numbers",
   "version": "2.0.0",
-  "description": "Blazing-fast prime number engine using worker_threads, segmented sieve, and native crypto",
+  "description": "Blazing-fast prime number engine: segmented sieve + worker_threads + native crypto",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "benchmark": "node index.js --benchmark --end 10000000",
-    "benchmark:big": "node index.js --benchmark --end 100000000",
-    "benchmark:nohash": "node index.js --no-hash --end 100000000",
-    "demo": "node index.js --end 1000000 --stdout | head -20"
+    "start":           "node index.js",
+    "test":            "node --test test/sieve.test.js && node --test test/worker.test.js",
+    "test:sieve":      "node --test test/sieve.test.js",
+    "test:worker":     "node --test test/worker.test.js",
+    "test:coverage":   "node --test --experimental-test-coverage test/sieve.test.js test/worker.test.js",
+    "benchmark":       "node index.js --benchmark --end 10000000",
+    "benchmark:big":   "node index.js --benchmark --end 100000000",
+    "benchmark:nohash":"node index.js --no-hash --end 100000000",
+    "demo":            "node index.js --end 1000 --stdout"
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "keywords": ["prime", "sieve", "worker_threads", "performance", "math"],
+  "keywords": [
+    "prime-numbers", "sieve-of-eratosthenes", "worker-threads",
+    "miller-rabin", "bigint", "performance", "mathematics",
+    "parallel", "cryptography", "nodejs"
+  ],
   "author": "syedshahzebhasnain",
   "license": "MIT"
 }
