@@ -1,26 +1,25 @@
 {
   "name": "node-cluster-prime-numbers",
-  "version": "2.0.0",
-  "description": "Blazing-fast prime number engine: segmented sieve + worker_threads + native crypto",
+  "version": "3.0.0",
+  "description": "Blazing-fast prime engine + Mersenne prime hunter targeting the world record. Segmented sieve, worker_threads, Lucas-Lehmer, distributed computing.",
   "main": "index.js",
   "scripts": {
-    "start":           "node index.js",
-    "test":            "node --test test/sieve.test.js && node --test test/worker.test.js",
-    "test:sieve":      "node --test test/sieve.test.js",
-    "test:worker":     "node --test test/worker.test.js",
-    "test:coverage":   "node --test --experimental-test-coverage test/sieve.test.js test/worker.test.js",
-    "benchmark":       "node index.js --benchmark --end 10000000",
-    "benchmark:big":   "node index.js --benchmark --end 100000000",
-    "benchmark:nohash":"node index.js --no-hash --end 100000000",
-    "demo":            "node index.js --end 1000 --stdout"
+    "start":          "node index.js",
+    "test":           "node --test test/sieve.test.js && node --test test/worker.test.js",
+    "test:sieve":     "node --test test/sieve.test.js",
+    "test:worker":    "node --test test/worker.test.js",
+    "benchmark":      "node index.js --benchmark --end 10000000",
+    "hunt":           "node mersenne-hunt.js --start 2 --end 10000",
+    "hunt:benchmark": "node mersenne-hunt.js --benchmark",
+    "hunt:verify":    "node mersenne-hunt.js --verify 127",
+    "hunt:serve":     "node mersenne-hunt.js --serve --port 3000",
+    "demo":           "node index.js --end 1000 --stdout"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
+  "engines": { "node": ">=18.0.0" },
   "keywords": [
-    "prime-numbers", "sieve-of-eratosthenes", "worker-threads",
-    "miller-rabin", "bigint", "performance", "mathematics",
-    "parallel", "cryptography", "nodejs"
+    "mersenne-primes","lucas-lehmer","prime-numbers","sieve-of-eratosthenes",
+    "worker-threads","distributed-computing","miller-rabin","bigint",
+    "performance","mathematics","cryptography","parallel-computing"
   ],
   "author": "syedshahzebhasnain",
   "license": "MIT"
